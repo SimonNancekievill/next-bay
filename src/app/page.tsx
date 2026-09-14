@@ -1,26 +1,12 @@
 "use client";
 
-import { getAuctionById, getAuctions } from "@/lib/auctions.service";
-import {
-  AuctionResponse,
-  PaginatedAuctionsResponse,
-} from "@/lib/types/auction.types";
+import { getAuctionById } from "@/lib/auctions.service";
+import { AuctionResponse } from "@/lib/types/auction.types";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [auctions, setAuctions] = useState<PaginatedAuctionsResponse>();
   const [testAuction, setTestAuction] = useState<AuctionResponse>();
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const initialAuctions = await getAuctions();
-        setAuctions(initialAuctions);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
 
   useEffect(() => {
     (async () => {
@@ -36,17 +22,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <ul>
-        {auctions &&
-          auctions.data.map((auction) => (
-            <li key={auction.id}>
-              {auction.title}({auction.id})
-            </li>
-          ))}
-      </ul>
-
+    <>
+      <Link href="/auctions">Auctions List -&gt;</Link>
       {testAuction && testAuction.title}
-    </div>
+    </>
   );
 }
