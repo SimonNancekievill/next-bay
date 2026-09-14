@@ -1,30 +1,17 @@
-"use client";
-
 import { getAuctions } from "@/lib/auctions.service";
-import { PaginatedAuctionsResponse } from "@/lib/types/auction.types";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function AuctionsPage() {
-  const [auctions, setAuctions] = useState<PaginatedAuctionsResponse>();
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const initialAuctions = await getAuctions();
-        setAuctions(initialAuctions);
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
-
+export default async function AuctionsListPage() {
+  const auctionsData = await getAuctions();
   return (
     <>
       <ul>
-        {auctions &&
-          auctions.data.map((auction) => (
+        {auctionsData &&
+          auctionsData.data.map((auction) => (
             <li key={auction.id}>
-              {auction.title}({auction.id})
+              <Link href={`/auctions/${auction.id}`}>
+                {auction.title}({auction.id})
+              </Link>
             </li>
           ))}
       </ul>
