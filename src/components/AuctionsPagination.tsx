@@ -10,7 +10,6 @@ export default function AuctionsPagination({
   meta: PaginationMetaResponse;
 }) {
   const pathName = usePathname();
-  console.log(pathName);
   return (
     <div className="mt-10">
       {meta.page > 1 && (
