@@ -1,4 +1,5 @@
 import AuctionsPagination from "@/components/AuctionsPagination";
+import AuctionsTotal from "@/components/AuctionsTotal";
 import { getAuctions } from "@/lib/auctions.service";
 import { SearchParams } from "next/dist/server/request/search-params";
 import Link from "next/link";
@@ -17,6 +18,7 @@ export default async function AuctionsListPage({
     <>
       {auctionsData && (
         <>
+          <AuctionsTotal meta={auctionsData.meta} />
           <ul>
             {auctionsData.data.map((auction) => (
               <li key={auction.id}>
