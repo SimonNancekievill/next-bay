@@ -1,11 +1,11 @@
 import { PaginationMetaResponse } from "./common.types";
-import { User } from "./user.types";
+import { UserResponse } from "./user.types";
 
 export type AuctionResponse = {
   id: string;
   title: string;
   description: string;
-  seller: User;
+  seller: UserResponse;
   startingPrice: number;
   createdAt: Date;
   endDate: Date;
