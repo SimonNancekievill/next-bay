@@ -9,8 +9,8 @@ export default function AuctionsTotal({
 
   return (
     <p className="mb-5">
-      Showing auctions {(page - 1) * limit + 1} -{" "}
-      {Math.min(page * limit, total)} of {total}
+      Showing auctions {(page - 1) * limit + 1}–{Math.min(page * limit, total)}{" "}
+      of {total}
     </p>
   );
 }
