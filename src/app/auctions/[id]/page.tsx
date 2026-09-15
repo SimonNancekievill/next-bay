@@ -1,6 +1,7 @@
+import LocaleDateString from "@/components/LocaleDateString";
 import { getAuctionById } from "@/lib/auctions.service";
 import { getOffersByAuctionId } from "@/lib/offers.service";
-import { Fragment } from "react/jsx-runtime";
+import Link from "next/link";
 
 export default async function AuctionDetailPage({
   params,
@@ -8,20 +9,54 @@ export default async function AuctionDetailPage({
   const { id } = await params;
   const auctionData = await getAuctionById(id);
 
+  if (!auctionData) {
+    // throw new Error("Auction not found.");
+    return <p>Auction not found.</p>;
+  }
+
   const offersData = await getOffersByAuctionId(id);
 
   return (
     <>
-      {auctionData && auctionData.title}
-      <h2 className="text-xl mt-3">Offers</h2>
-      {offersData ? (
-        <ol>
-          {offersData.map((offer) => (
-            <li key={offer.id}>{offer.offerPrice}</li>
-          ))}
-        </ol>
-      ) : (
-        "No offers yet."
+      <Link href="/auctions">&lt;- Auctions List</Link>
+      {auctionData && (
+        <>
+          {auctionData.title && <h2>{auctionData.title}</h2>}
+          {auctionData.description && <p>{auctionData.description}</p>}
+          {auctionData.endDate && (
+            <p>
+              Auction end: <LocaleDateString date={auctionData.endDate} />
+            </p>
+          )}
+          {auctionData.currentPrice && (
+            <p>Current price: {auctionData.currentPrice}</p>
+          )}
+          <h2 className="text-xl mt-3">Bid History</h2>
+          {offersData ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Price</th>
+                  <th>Bidder</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {offersData.map((offer) => (
+                  <tr key={offer.id}>
+                    <td>{offer.offerPrice}</td>
+                    <td>{offer.bidder.username}</td>
+                    <td>
+                      <LocaleDateString date={offer.createdAt} />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            "No offers yet."
+          )}
+        </>
       )}
     </>
   );
