@@ -2,23 +2,23 @@ import LocaleDateString from "@/components/LocaleDateString";
 import { getAuctionById } from "@/lib/auctions.service";
 import { getOffersByAuctionId } from "@/lib/offers.service";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export default async function AuctionDetailPage({
   params,
 }: PageProps<"/auctions/[id]">) {
   const { id } = await params;
   const auctionData = await getAuctionById(id);
-
-  if (!auctionData) {
-    // throw new Error("Auction not found.");
-    return <p>Auction not found.</p>;
+  console.log("auctionData:", auctionData);
+  if (auctionData.statusCode === 404) {
+    notFound();
   }
 
   const offersData = await getOffersByAuctionId(id);
 
   return (
     <>
-      <Link href="/auctions">&lt;- Auctions List</Link>
+      <Link href="/auctions">&#x2B60; Auctions List</Link>
       {auctionData && (
         <>
           {auctionData.title && <h2>{auctionData.title}</h2>}

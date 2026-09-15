@@ -10,6 +10,7 @@ export type AuctionResponse = {
   currentPrice: number;
   createdAt: Date;
   endDate: Date;
+  statusCode?: number;
 };
 
 export type PaginatedAuctionsResponse = {
