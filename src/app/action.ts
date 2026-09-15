@@ -37,3 +37,11 @@ export async function logoutUser() {
 
 	redirect("/");
 }
+
+export async function isAuthenticated(): Promise<boolean> {
+	const cookieStore = await cookies();
+
+	const token = cookieStore.get(AUTH_COOKIE)?.value;
+
+	return token ? true : false;
+}

@@ -22,7 +22,7 @@ export function UserLogin() {
 				</CardDescription>
 				<CardAction>
 					<Link href="/register" className={buttonVariants({ variant: "link" })}>
-						Sign Up
+						Sign up
 					</Link>
 				</CardAction>
 			</CardHeader>

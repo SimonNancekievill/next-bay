@@ -12,7 +12,7 @@ export async function fetchAPI(path: string, options: RequestInit = {}) {
 		headers.set("Authorization", `Bearer ${token}`);
 	}
 
-	return fetch(`${process.env.NEXT_PUBLIC_DARKBAY_API_URL}${path}`, {
+	return fetch(`${path}`, {
 		...options,
 		headers,
 	});
