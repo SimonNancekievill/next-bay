@@ -7,6 +7,7 @@ export type AuctionResponse = {
   description: string;
   seller: UserResponse;
   startingPrice: number;
+  currentPrice: number;
   createdAt: Date;
   endDate: Date;
 };
