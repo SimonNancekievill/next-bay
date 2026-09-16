@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/button";
 
 export default async function AuctionsListPage({
   searchParams,
@@ -23,6 +24,12 @@ export default async function AuctionsListPage({
 
   return (
     <>
+      <Link
+        href="/auctions/new"
+        className={buttonVariants({ variant: "outline" })}
+      >
+        Create new auction.
+      </Link>
       {auctionsData && (
         <>
           <AuctionsTotal meta={auctionsData.meta} />
@@ -37,7 +44,9 @@ export default async function AuctionsListPage({
                       </CardTitle>
                     </Link>
                   </CardHeader>
-                  <CardContent>{auction.currentPrice} $</CardContent>
+                  <CardContent>
+                    ${Math.max(auction.currentPrice, auction.startingPrice)}
+                  </CardContent>
                   <CardFooter>{auction.id}</CardFooter>
                 </Card>
               </li>

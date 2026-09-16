@@ -11,7 +11,13 @@ export type AuctionResponse = {
   createdAt: Date;
   endDate: Date;
   statusCode?: number;
+  message?: string;
 };
+
+export type NewAuction = Pick<
+  AuctionResponse,
+  "title" | "description" | "startingPrice"
+>;
 
 export type PaginatedAuctionsResponse = {
   data: AuctionResponse[];
