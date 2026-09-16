@@ -1,16 +1,16 @@
 "use server";
 
-import { loginAction } from "@/lib/authActions.service";
+import { loginUser, registerUser } from "@/lib/auth.service";
 import { cookies } from "next/headers";
 import { redirect, unauthorized } from "next/navigation";
 
 const AUTH_COOKIE = "darkbay_token";
 
-export async function loginUser(formData: FormData) {
+export async function loginAction(formData: FormData) {
 	const username = formData.get("username") as string;
 	const password = formData.get("password") as string;
 
-	const authData = await loginAction({ username, password });
+	const authData = await loginUser({ username, password });
 
 	if (authData.statusCode === 401 || !authData.access_token) {
 		unauthorized();
@@ -30,7 +30,22 @@ export async function loginUser(formData: FormData) {
 	redirect("/auctions");
 }
 
-export async function logoutUser() {
+export async function registerAction(formData: FormData) {
+	const username = formData.get("username") as string;
+	const password = formData.get("password") as string;
+
+	console.log("regusterUser", username, password);
+
+	const authData = await registerUser({ username, password });
+
+	if (authData.statusCode) {
+		throw new Error(authData.message);
+	}
+
+	redirect("/login");
+}
+
+export async function logoutAction() {
 	const cookieStore = await cookies();
 
 	cookieStore.delete(AUTH_COOKIE);

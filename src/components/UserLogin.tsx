@@ -1,4 +1,4 @@
-import { loginUser } from "@/app/action";
+import { loginAction } from "@/app/action";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
 	Card,
@@ -27,7 +27,7 @@ export function UserLogin() {
 				</CardAction>
 			</CardHeader>
 			<CardContent>
-				<form action={loginUser}>
+				<form action={loginAction}>
 					<div className="flex flex-col gap-6">
 						<div className="grid gap-2">
 							<Label htmlFor="username">Username</Label>

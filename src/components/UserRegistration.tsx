@@ -1,10 +1,10 @@
+import { registerAction } from "@/app/action";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
 	Card,
 	CardAction,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
@@ -16,9 +16,9 @@ export function UserRegistration() {
 	return (
 		<Card className="w-full max-w-sm">
 			<CardHeader>
-				<CardTitle>Login to your account</CardTitle>
+				<CardTitle>Sign up to NextBay</CardTitle>
 				<CardDescription>
-					Enter your username below to login to your account
+					Enter a unique username and password below to create an account
 				</CardDescription>
 				<CardAction>
 					<Link href="/register" className={buttonVariants({ variant: "link" })}>
@@ -27,7 +27,7 @@ export function UserRegistration() {
 				</CardAction>
 			</CardHeader>
 			<CardContent>
-				<form>
+				<form action={registerAction}>
 					<div className="flex flex-col gap-6">
 						<div className="grid gap-2">
 							<Label htmlFor="username">Username</Label>
@@ -50,13 +50,13 @@ export function UserRegistration() {
 							/>
 						</div>
 					</div>
+					<div className="flex-col gap-2">
+						<Button type="submit" className="w-full">
+							Login
+						</Button>
+					</div>
 				</form>
 			</CardContent>
-			<CardFooter className="flex-col gap-2">
-				<Button type="submit" className="w-full">
-					Register
-				</Button>
-			</CardFooter>
 		</Card>
 	);
 }

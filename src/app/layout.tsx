@@ -5,6 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/ModeToggle";
+import { AuthLink } from "@/components/AuthLink";
 
 const jetbrainsMono = JetBrains_Mono({
 	subsets: ["latin"],
@@ -51,7 +52,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 						<h1 className="text-3xl">
 							<Link href="/">nextBay</Link>
 						</h1>
-						<ModeToggle />
+						<div>
+							<ModeToggle />
+							<AuthLink />
+						</div>
 					</header>
 					<main className="p-3">{children}</main>
 				</ThemeProvider>

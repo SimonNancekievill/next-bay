@@ -1,10 +1,10 @@
-import { logoutUser } from "@/app/action";
+import { logoutAction } from "@/app/action";
 import { Button } from "./ui/button";
 
 export function UserLogout() {
 	return (
 		<>
-			<form action={logoutUser}>
+			<form action={logoutAction}>
 				<Button type="submit">Logout</Button>
 			</form>
 		</>
