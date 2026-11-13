@@ -19,8 +19,6 @@ export async function registerUser({
 	username,
 	password,
 }: UserCredentials): Promise<RegistrationResponse> {
-	console.log("registerAction", username, password);
-
 	const response = await fetchAPI(process.env.NEXT_PUBLIC_DARKBAY_API_URL + `/auth/register`, {
 		method: "POST",
 		headers: {
@@ -30,6 +28,5 @@ export async function registerUser({
 	});
 	const registrationData = await response.json();
 
-	console.log("registrationData", registrationData);
 	return registrationData;
 }

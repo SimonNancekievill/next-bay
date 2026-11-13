@@ -37,8 +37,6 @@ export async function registerAction(formData: FormData) {
 	const username = formData.get("username") as string;
 	const password = formData.get("password") as string;
 
-	console.log("regusterUser", username, password);
-
 	const authData = await registerUser({ username, password });
 
 	if (authData.statusCode) {
