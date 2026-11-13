@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next Bay
 
-## Getting Started
+Next.js frontend for the [Dark Bay](https://github.com/SimonNancekievill/dark-bay) auction API: browse auctions, register, log in and create auctions.
 
-First, run the development server:
+## Requirements
+
+- Node 24 (see `.nvmrc`)
+- pnpm (`brew install pnpm`)
+- A running Dark Bay API, locally or on Render
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+cp .env.example .env
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Set `NEXT_PUBLIC_DARKBAY_API_URL` in `.env` to the API URL, e.g. `http://localhost:3030` for a local Dark Bay.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Run
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev
+```
 
-## Learn More
+The app runs at http://localhost:3000.
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev           # start the dev server
+pnpm build         # production build
+pnpm start         # serve the production build
+pnpm lint          # ESLint
+pnpm lint:fix      # ESLint with auto-fix
+pnpm format        # Prettier, write
+pnpm format:check  # Prettier, check only
+pnpm typecheck     # tsc (generates Next.js route types first)
+pnpm check         # lint + format:check + typecheck
+pnpm test          # Vitest
+pnpm sync          # switch to main, pull, install dependencies
+pnpm sync:branch   # merge main into the current branch (without committing), install dependencies
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment (Vercel)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel detects pnpm from `pnpm-lock.yaml`. Set the Node.js version to 24.x in the project settings and `NEXT_PUBLIC_DARKBAY_API_URL` in the environment variables.
