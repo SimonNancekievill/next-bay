@@ -1,4 +1,5 @@
 import { logoutAction } from "@/app/action";
+
 import { Button } from "./ui/button";
 
 export function UserLogout() {

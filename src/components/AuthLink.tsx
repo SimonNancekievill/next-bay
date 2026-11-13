@@ -1,5 +1,7 @@
 import { UserRound } from "lucide-react";
+import Link from "next/link";
 
+import { isAuthenticated } from "@/app/action";
 import { buttonVariants } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -7,10 +9,9 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import { UserLogin } from "./UserLogin";
-import { isAuthenticated } from "@/app/action";
 import { UserLogout } from "./UserLogout";
-import Link from "next/link";
 
 export async function AuthLink() {
 	return (
