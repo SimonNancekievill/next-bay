@@ -1,5 +1,5 @@
-import { PaginationMetaResponse } from "./common.types";
-import { UserResponse } from "./user.types";
+import type { PaginationMetaResponse } from "./common.types";
+import type { UserResponse } from "./user.types";
 
 export type AuctionResponse = {
 	id: string;

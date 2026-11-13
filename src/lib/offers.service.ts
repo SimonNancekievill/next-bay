@@ -1,4 +1,4 @@
-import { OfferResponse } from "./types/offer.types";
+import type { OfferResponse } from "./types/offer.types";
 
 export async function getOffersByAuctionId(auctionId: string): Promise<OfferResponse[]> {
 	const response = await fetch(

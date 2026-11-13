@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { PaginationMetaResponse } from "@/lib/types/common.types";
+import type { PaginationMetaResponse } from "@/lib/types/common.types";
 
 export default function AuctionsPagination({ meta }: { meta: PaginationMetaResponse }) {
 	const pathName = usePathname();

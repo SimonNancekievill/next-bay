@@ -1,4 +1,4 @@
-import { PaginationMetaResponse } from "@/lib/types/common.types";
+import type { PaginationMetaResponse } from "@/lib/types/common.types";
 
 export default function AuctionsTotal({ meta }: { meta: PaginationMetaResponse }) {
 	const { page, limit, total } = meta;

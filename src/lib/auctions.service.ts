@@ -1,6 +1,6 @@
 import { fetchAPI } from "./fetchAPI";
-import { AuctionResponse, NewAuction, PaginatedAuctionsResponse } from "./types/auction.types";
-import { PaginationMetaResponse } from "./types/common.types";
+import type { AuctionResponse, NewAuction, PaginatedAuctionsResponse } from "./types/auction.types";
+import type { PaginationMetaResponse } from "./types/common.types";
 
 export async function getAuctions({
 	page,

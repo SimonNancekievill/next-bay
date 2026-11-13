@@ -1,10 +1,11 @@
 "use client";
 
 import { cn } from "cn";
-import * as React from "react";
+import type * as React from "react";
 
 function Label({ className, ...props }: React.ComponentProps<"label">) {
 	return (
+		// eslint-disable-next-line jsx-a11y/label-has-associated-control -- htmlFor is passed in through props
 		<label
 			data-slot="label"
 			className={cn(

@@ -1,6 +1,6 @@
 import { fetchAPI } from "./fetchAPI";
-import { AuthResponse, RegistrationResponse } from "./types/auth.types";
-import { UserCredentials } from "./types/user.types";
+import type { AuthResponse, RegistrationResponse } from "./types/auth.types";
+import type { UserCredentials } from "./types/user.types";
 
 export async function loginUser({ username, password }: UserCredentials): Promise<AuthResponse> {
 	const response = await fetch(process.env.NEXT_PUBLIC_DARKBAY_API_URL + `/auth/login`, {

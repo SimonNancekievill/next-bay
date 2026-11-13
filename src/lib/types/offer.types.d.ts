@@ -1,4 +1,4 @@
-import { UserResponse } from "./user.types";
+import type { UserResponse } from "./user.types";
 
 export type OfferResponse = {
 	id: string;

@@ -1,4 +1,4 @@
-import { SearchParams } from "next/dist/server/request/search-params";
+import type { SearchParams } from "next/dist/server/request/search-params";
 import Link from "next/link";
 
 import AuctionsPagination from "@/components/AuctionsPagination";
