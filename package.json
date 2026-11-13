@@ -12,6 +12,8 @@
 		"format:check": "prettier --check .",
 		"typecheck": "next typegen && tsc --noEmit",
 		"check": "pnpm lint && pnpm format:check && pnpm typecheck",
+		"test": "vitest run",
+		"test:watch": "vitest",
 		"sync": "git switch main && git pull && pnpm install",
 		"sync:branch": "git fetch origin && git merge --no-commit origin/main && pnpm install"
 	},
@@ -30,6 +32,9 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss": "^4.3.5",
+		"@testing-library/dom": "^10.4.2",
+		"@testing-library/jest-dom": "^7.0.1",
+		"@testing-library/react": "^16.3.3",
 		"@types/node": "^24.19.2",
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
@@ -38,11 +43,13 @@
 		"eslint-config-next": "16.4.6",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-jsx-a11y": "^6.10.2",
+		"jsdom": "^31.0.0",
 		"prettier": "^3.10.1",
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"shadcn": "^4.23.0",
 		"tailwindcss": "^4.3.5",
-		"typescript": "~6.0.3"
+		"typescript": "~6.0.3",
+		"vitest": "^5.1.0"
 	},
 	"packageManager": "pnpm@12.18.0",
 	"engines": {
