@@ -26,6 +26,7 @@ function loginForm() {
 describe("loginAction", () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
+		vi.unstubAllEnvs();
 	});
 
 	it("stores the token in an httpOnly cookie and redirects to the auctions", async () => {
@@ -39,6 +40,31 @@ describe("loginAction", () => {
 			expect.objectContaining({ httpOnly: true }),
 		);
 		expect(redirect).toHaveBeenCalledWith("/auctions");
+	});
+
+	it("sends the cookie over HTTP outside production, so local login works", async () => {
+		vi.mocked(loginUser).mockResolvedValue({ access_token: "abc" });
+
+		await loginAction(loginForm());
+
+		expect(cookieStore.set).toHaveBeenCalledWith(
+			"darkbay_token",
+			"abc",
+			expect.objectContaining({ secure: false }),
+		);
+	});
+
+	it("only sends the cookie over HTTPS in production", async () => {
+		vi.stubEnv("NODE_ENV", "production");
+		vi.mocked(loginUser).mockResolvedValue({ access_token: "abc" });
+
+		await loginAction(loginForm());
+
+		expect(cookieStore.set).toHaveBeenCalledWith(
+			"darkbay_token",
+			"abc",
+			expect.objectContaining({ secure: true }),
+		);
 	});
 
 	it("rejects wrong credentials without setting a cookie", async () => {
