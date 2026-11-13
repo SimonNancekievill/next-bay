@@ -15,7 +15,7 @@ pnpm install
 cp .env.example .env
 ```
 
-Set `NEXT_PUBLIC_DARKBAY_API_URL` in `.env` to the API URL, e.g. `http://localhost:3030` for a local Dark Bay.
+`.env.example` points to a local Dark Bay at `http://localhost:3030` (see its README for the database and `pnpm dev`). To use the deployed API instead, set `NEXT_PUBLIC_DARKBAY_API_URL=https://dark-bay-9nut.onrender.com` in `.env`.
 
 ## Run
 
