@@ -1,5 +1,5 @@
+import { isAuthenticated } from "@/app/action";
 import { UserLogin } from "@/components/UserLogin";
-import { isAuthenticated } from "../action";
 import { UserLogout } from "@/components/UserLogout";
 
 export default async function LoginPage() {

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { loginAction } from "@/app/action";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -10,7 +12,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
 
 export function UserLogin() {
 	return (

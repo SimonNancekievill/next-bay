@@ -1,6 +1,6 @@
 import { fetchAPI } from "./fetchAPI";
-import { AuthResponse, RegistrationResponse } from "./types/auth.types";
-import { UserCredentials } from "./types/user.types";
+import type { AuthResponse, RegistrationResponse } from "./types/auth.types";
+import type { UserCredentials } from "./types/user.types";
 
 export async function loginUser({ username, password }: UserCredentials): Promise<AuthResponse> {
 	const response = await fetch(process.env.NEXT_PUBLIC_DARKBAY_API_URL + `/auth/login`, {
@@ -19,8 +19,6 @@ export async function registerUser({
 	username,
 	password,
 }: UserCredentials): Promise<RegistrationResponse> {
-	console.log("registerAction", username, password);
-
 	const response = await fetchAPI(process.env.NEXT_PUBLIC_DARKBAY_API_URL + `/auth/register`, {
 		method: "POST",
 		headers: {
@@ -30,6 +28,5 @@ export async function registerUser({
 	});
 	const registrationData = await response.json();
 
-	console.log("registrationData", registrationData);
 	return registrationData;
 }

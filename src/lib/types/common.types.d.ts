@@ -1,6 +1,6 @@
 export type PaginationMetaResponse = {
-  page: number;
-  limit: number;
-  total: number;
-  totalPages: number;
+	page: number;
+	limit: number;
+	total: number;
+	totalPages: number;
 };
